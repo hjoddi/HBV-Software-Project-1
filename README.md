@@ -1,2 +1,2 @@
 # HBV-Software-Project-1
-Selected projects for class TÖL304G at the University Of Iceland
+Project for class TÖL304G at the University Of Iceland
