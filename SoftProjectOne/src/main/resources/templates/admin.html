@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--<html xmlns:th="https://www.thymeleaf.org">-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Recipe</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+<a th:href="@{/adminDeleteAllRecipes}">
+  <button type="button">Delete all recipes</button>
+</a>
+<a th:href="@{/adminDeleteAllComments}">
+  <button type="button">Delete all comments on all recipes</button>
+</a>
+<a th:href="@{/adminDeleteAllUsers}">
+  <button type="button">Delete all users</button>
+</a>
+<a th:href="@{/adminResetAllRatings}">
+  <button type="button">Reset all ratings</button>
+</a>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--<html xmlns:th="https://www.thymeleaf.org">-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Recipe</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="card-deck mx-auto">
+      <div class="mx-auto d-flex" style="display: flex; flex-direction: column;">
+          <a th:href="@{/index}" style="align-self: center;">
+              <img src="/img/lazy.png" alt="..." style="width: 200px; height: 200px">
+          </a>
+          <div class="card" style="width: 18rem;">
+            <img th:src="@{${'/img/' + recipe.imageName+'.jpg'}}" class="card-img-top" alt="..."/>
+            <div class="card-body">
+              <h5 class="card-title" th:text="${recipe.name}"></h5>
+            </div>
+              <div class="card-body">
+                  <h6>Rating:</h6>
+                  <p class="card-text" th:text="${recipe.rating}"></p>
+              </div>
+              <div class="card-body">
+                  <h6>Ingredients:</h6>
+                  <ul class="list-group list-group-flush" th:each="ingredient: ${recipe.ingredients}">
+                      <li class="list-group-item" th:text="${ingredient}"></li>
+                  </ul>
+              </div>
+            <div class="card-body">
+                <h6>Instructions:</h6>
+              <p class="card-text" th:text="${recipe.instructions}"></p>
+            </div>
+              <div class="card-body">
+                  <div th:if="${isFavorited != null}">
+                      <div th:switch="${isFavorited}">
+                          <div th:case="false">
+                              <a th:href="@{/recipeSaved/{id}(id=${recipe.id})}">
+                                  <button class="btn btn-outline-success my-2 my-sm-0" type="button">
+                                      Save Recipe
+                                  </button>
+                              </a>
+                          </div>
+                          <div th:case="true">
+                              <!-- TODO ADD A MAPPING TO THE DELETE FROM FAVORITES BUTTON -->
+                              <a th:href="@{/deleteSaved/{id}(id=${recipe.id})}">
+                                  <button class="btn btn-outline-danger my-2 my-sm-0" type="button">
+                                      Remove Recipe
+                                  </button>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div th:if="${isFavorited != null}">
+                  <div class="card-body">
+                      <h6>Rate recipe:</h6>
+                      <a th:href="@{/singleRecipePage/1/{id}(id=${recipe.id})}">
+                          <button class="btn btn-outline-success my-2 my-sm-0" type="button">1</button>
+                      </a>
+                      <a th:href="@{/singleRecipePage/2/{id}(id=${recipe.id})}">
+                          <button class="btn btn-outline-success my-2 my-sm-0" type="button">2</button>
+                      </a>
+                      <a th:href="@{/singleRecipePage/3/{id}(id=${recipe.id})}">
+                          <button class="btn btn-outline-success my-2 my-sm-0" type="button">3</button>
+                      </a>
+                      <a th:href="@{/singleRecipePage/4/{id}(id=${recipe.id})}">
+                          <button class="btn btn-outline-success my-2 my-sm-0" type="button">4</button>
+                      </a>
+                      <a th:href="@{/singleRecipePage/5/{id}(id=${recipe.id})}">
+                          <button class="btn btn-outline-success my-2 my-sm-0" type="button">5</button>
+                      </a>
+                  </div>
+              </div>
+              <div th:if="${isFavorited != null}">
+                  <div class="card-body">
+                      <h6>Leave a comment:</h6>
+                      <form action="#" th:action="@{/addComment/{id}(id=${recipe.id})}" th:object="${comment}" method="post">
+                          <input type="text" th:field="*{commentString}" />
+                          <input type="submit" value="Submit"  class="btn btn-outline-success my-2 my-sm-0"/>
+                      </form>
+                  </div>
+              </div>
+              <div class="card-body">
+                  <h6>Comments:</h6>
+                  <ul class="list-group list-group-flush" th:each="comment: ${recipe.comments}">
+                      <li class="list-group-item" th:text="${comment}"></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+    </div>
+</body>
+</html>
