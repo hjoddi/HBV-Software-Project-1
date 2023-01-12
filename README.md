@@ -1,6 +1,6 @@
 # HBV-Software-Project-1
 
-Project for class TÖL304G at the University Of Iceland
+Project for class HBV501G at the University Of Iceland
 
 Website hosting user-submitted recipes adhering to simplicity-rules.
 
